@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import Cookies from 'js-cookie';
 import kebabCase from 'lodash/kebabCase';
+import { VueBase } from '@/cmp-bases/vue-base';
 
 Vue.use(VueI18n);
 
@@ -33,7 +34,7 @@ function loadCmpLangAsync(
   if (!loadedCmpLangs.includes(cmpLang)) {
     const cmpNameLower = kebabCase(cmpName);
     const promise = import(
-      /* webpackInclude: /\.i18n\.[a-z_]+\.ts$/ */
+      /* webpackInclude: /\.i18n\.ts$/ */
       /* webpackChunkName: `${lang}-[request]` */
       // tslint:disable-next-line: trailing-comma
       `@/locales/${lang}/${cmpNameLower}.i18n.ts`
