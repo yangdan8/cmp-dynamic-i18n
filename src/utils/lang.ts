@@ -35,9 +35,9 @@ function loadCmpLangAsync(
     const cmpNameLower = kebabCase(cmpName);
     const promise = import(
       /* webpackInclude: /\.i18n\.ts$/ */
-      /* webpackChunkName: `${lang}-[request]` */
+      /* webpackChunkName: `[request]` */
       // tslint:disable-next-line: trailing-comma
-      `@/locales/${lang}/${cmpNameLower}.i18n.ts`
+      `@/locales/${lang}/${cmpNameLower}.i18n`
     ).then((msg: { default: VueI18n.LocaleMessageObject }) => {
       const obj = msg.default;
       const keys = Object.keys(obj);
