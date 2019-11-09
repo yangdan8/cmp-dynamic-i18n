@@ -16,6 +16,7 @@ export class App extends Mixins(VueBase) {
   }
 
   private mounted() {
-    this.chooseLanguage(LangEnum.zhCn);
+    const lang = (Cookies.get('lang') as LangEnum) || LangEnum.zhCn;
+    this.chooseLanguage(lang);
   }
 }
