@@ -1,15 +1,12 @@
 <div id="app">
   <div id="lang">
-    <div class="content">
-      {{$t('reg_button_register')}}
-    </div>
-    <button @click="chooseLanguage('zh_cn')">cn</button>
-    <button @click="chooseLanguage('en')">en</button>
-    <button @click="chooseLanguage('in')">in</button>
+    <button @click="chooseLanguage('zh_cn')">中文</button>
+    <button @click="chooseLanguage('en')">English</button>
+    <button @click="chooseLanguage('jp')">日本語</button>
   </div>
   <div id="nav">
-    <router-link to="/">Home</router-link>|
-    <router-link to="/about">About</router-link>
+    <router-link to="/">{{ $t('home') }}</router-link>|
+    <router-link to="/about">{{ $t('about') }}</router-link>
   </div>
   <router-view />
 </div>

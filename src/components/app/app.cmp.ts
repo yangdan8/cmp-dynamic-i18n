@@ -1,6 +1,6 @@
-import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
-import { LangEnum, loadLanguageAsync } from '@/utils/lang';
+import { Component, Mixins } from 'vue-property-decorator';
+import { VueBase } from '@/cmp-bases/vue-base';
+import { LangEnum, loadLangAsync } from '@/utils/lang';
 import Cookies from 'js-cookie';
 import template from './app.cmp.html';
 import './app.cmp.scss';
@@ -9,10 +9,10 @@ import './app.cmp.scss';
   name: 'app',
   template,
 })
-export class App extends Vue {
+export class App extends Mixins(VueBase) {
   public chooseLanguage(lang: LangEnum) {
     Cookies.set('lang', lang);
-    loadLanguageAsync();
+    loadLangAsync.call(this, true);
   }
 
   private mounted() {

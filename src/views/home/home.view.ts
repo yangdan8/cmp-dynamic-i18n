@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import { Component, Mixins } from 'vue-property-decorator';
+import { VueBase } from '@/cmp-bases/vue-base';
 import HelloWorld from '@/components/hello-world';
 import template from './home.view.html';
 
@@ -10,4 +10,4 @@ import template from './home.view.html';
     HelloWorld,
   },
 })
-export class Home extends Vue {}
+export class Home extends Mixins(VueBase) {}
