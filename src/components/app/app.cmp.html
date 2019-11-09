@@ -1,0 +1,15 @@
+<div id="app">
+  <div id="lang">
+    <div class="content">
+      {{$t('reg_button_register')}}
+    </div>
+    <button @click="chooseLanguage('zh_cn')">cn</button>
+    <button @click="chooseLanguage('en')">en</button>
+    <button @click="chooseLanguage('in')">in</button>
+  </div>
+  <div id="nav">
+    <router-link to="/">Home</router-link>|
+    <router-link to="/about">About</router-link>
+  </div>
+  <router-view />
+</div>

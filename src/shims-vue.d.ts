@@ -1,4 +1,14 @@
-declare module '*.vue' {
-  import Vue from 'vue';
-  export default Vue;
+declare module '*.scss' {
+  const str: string;
+  export default str;
+}
+
+declare module '*.css' {
+  const str: string;
+  export default str;
+}
+
+declare module '*.html' {
+  const str: string;
+  export default str;
 }
