@@ -2,7 +2,6 @@ import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import Cookies from 'js-cookie';
 import kebabCase from 'lodash/kebabCase';
-import { VueBase } from '@/cmp-bases/vue-base';
 
 Vue.use(VueI18n);
 
@@ -38,14 +37,11 @@ function loadCmpLangAsync(
       /* webpackChunkName: `[request]` */
       // tslint:disable-next-line: trailing-comma
       `@/locales/${lang}/${cmpNameLower}.i18n`
-    ).then((msg: { default: VueI18n.LocaleMessageObject }) => {
-      const obj = msg.default;
-      const keys = Object.keys(obj);
-      keys.forEach((key: string) => {
-        const keyNew = `${cmpName}.${key}`;
-        obj[keyNew] = obj[key];
-      });
-      i18n.setLocaleMessage(lang, obj);
+    ).then((obj: { default: VueI18n.LocaleMessageObject }) => {
+      const json = obj.default;
+      const msg = i18n.getLocaleMessage(lang);
+      msg[cmpName] = json;
+      i18n.setLocaleMessage(lang, msg);
       loadedCmpLangs.push(cmpLang);
       return cmpLang;
     });
@@ -72,7 +68,7 @@ export function loadLangAsync(this: Vue, deep: boolean = false) {
 
   const promises = loadCmpLangAsync.call(this, lang, deep);
 
-  Promise.all(promises)
+  return Promise.all(promises)
     .then(() => {
       // 将实际更改 vueI18n 实例、axios 以及其它需要本地化的地方
       i18n.locale = lang;

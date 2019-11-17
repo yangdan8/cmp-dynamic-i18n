@@ -13,6 +13,8 @@ export class VueBase extends Mixins(Vue) {
     locale?: VueI18n.Locale | VueI18n.Values,
     values?: VueI18n.Values,
   ) {
+    // tslint:disable-next-line:no-console
+    console.warn(9999334334);
     // 之前的$t方法
     const $t = Vue.prototype.$t as typeof VueI18n.prototype.t;
     const { constructor } = this;
